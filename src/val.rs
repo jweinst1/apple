@@ -8,7 +8,7 @@ pub enum Val {
 	Null
 }
 
-//number operations, arithmetic
+//int operations, arithmetic
 
 impl Val {
 
@@ -16,6 +16,13 @@ impl Val {
 		match self {
 			Val::Int(i) => i,
 			_ => 0
+		}
+	}
+
+	pub fn is_int(self) -> bool {
+		match self {
+			Val::Int(_) => true,
+			_ => false
 		}
 	}
 
@@ -63,6 +70,16 @@ impl Val {
 		match self {
 			Val::Int(i) => match other {
 				Val::Int(j) => Val::Int(i % j),
+				_ => Val::Null
+			},
+			_ => Val::Null
+		}
+	}
+
+	pub fn min(self, other:Val) -> Val {
+		match self {
+			Val::Int(i) => match other {
+				Val::Int(j) => return if i <= j {Val::Int(i)} else {Val::Int(j)},
 				_ => Val::Null
 			},
 			_ => Val::Null

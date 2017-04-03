@@ -4,7 +4,7 @@ version = "0.1.0"
 authors = ["JoshuaWeinstein <jweinst1@berkeley.edu>"]
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/killercup/hsl-rs.git"
-homepage = "https://github.com/killercup/hsl-rs.git"
+repository = "https://github.com/jweinst1/apple"
+homepage = "https://github.com/jweinst1/apple"
 
 [dependencies]
