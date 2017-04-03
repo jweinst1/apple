@@ -28,4 +28,44 @@ impl Val {
 			_ => Val::Null
 		}
 	}
+
+	pub fn sub(self, other:Val) -> Val {
+		match self {
+			Val::Int(i) => match other {
+				Val::Int(j) => Val::Int(i - j),
+				_ => Val::Null
+			},
+			_ => Val::Null
+		}
+	}
+
+	pub fn mul(self, other:Val) -> Val {
+		match self {
+			Val::Int(i) => match other {
+				Val::Int(j) => Val::Int(i * j),
+				_ => Val::Null
+			},
+			_ => Val::Null
+		}
+	}
+
+	pub fn div(self, other:Val) -> Val {
+		match self {
+			Val::Int(i) => match other {
+				Val::Int(j) => Val::Int(i / j),
+				_ => Val::Null
+			},
+			_ => Val::Null
+		}
+	}
+
+	pub fn rem(self, other:Val) -> Val {
+		match self {
+			Val::Int(i) => match other {
+				Val::Int(j) => Val::Int(i % j),
+				_ => Val::Null
+			},
+			_ => Val::Null
+		}
+	}
 }
