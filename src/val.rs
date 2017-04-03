@@ -19,6 +19,13 @@ impl Val {
 		}
 	}
 
+	pub fn str(self) -> String {
+		match self {
+			Val::Str(s) => s,
+			_ => "".to_string()
+		}
+	}
+
 	pub fn is_int(self) -> bool {
 		match self {
 			Val::Int(_) => true,
@@ -30,6 +37,10 @@ impl Val {
 		match self {
 			Val::Int(i) => match other {
 				Val::Int(j) => Val::Int(i + j),
+				_ => Val::Null
+			},
+			Val::Str(s) => match other {
+				Val::Str(so) => Val::Str(s + &so),
 				_ => Val::Null
 			},
 			_ => Val::Null
@@ -80,6 +91,16 @@ impl Val {
 		match self {
 			Val::Int(i) => match other {
 				Val::Int(j) => return if i <= j {Val::Int(i)} else {Val::Int(j)},
+				_ => Val::Null
+			},
+			_ => Val::Null
+		}
+	}
+
+	pub fn max(self, other:Val) -> Val {
+		match self {
+			Val::Int(i) => match other {
+				Val::Int(j) => return if i >= j {Val::Int(i)} else {Val::Int(j)},
 				_ => Val::Null
 			},
 			_ => Val::Null
