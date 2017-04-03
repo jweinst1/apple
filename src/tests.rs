@@ -37,3 +37,13 @@ fn test_is_int() {
  fn test_str_plus(){
  	assert_eq!(Val::Str("t".to_string()).plus(Val::Str("j".to_string())).str(), "tj".to_string());
  }
+
+  #[test]
+ fn test_str_from(){
+ 	assert_eq!(Val::from_str("hello").str(), "hello".to_string());
+ }
+
+   #[test]
+ fn test_int_from(){
+ 	assert_eq!(Val::from_int(1).int(), 1);
+ }

@@ -12,6 +12,14 @@ pub enum Val {
 
 impl Val {
 
+	pub fn from_str(s: &str) -> Val {
+		Val::Str(String::from(s))
+	}
+
+	pub fn from_int(elem:i32) -> Val {
+		Val::Int(elem)
+	}
+
 	pub fn int(self) -> i32 {
 		match self {
 			Val::Int(i) => i,
