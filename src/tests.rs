@@ -22,9 +22,16 @@ fn test_is_int() {
  }
 
    #[test]
+ fn test_mul() {
+    	assert_eq!(Val::Int(5).mul(Val::Int(3)), Val::from_int(15));
+ }
+
+   #[test]
  fn test_min() {
     	assert_eq!(Val::Int(5).min(Val::Int(3)).int(), 3);
  }
+
+
 
  //string tests
 
@@ -46,4 +53,9 @@ fn test_is_int() {
    #[test]
  fn test_int_from(){
  	assert_eq!(Val::from_int(1).int(), 1);
+ }
+
+ #[test]
+ fn test_len(){
+ 	assert_eq!(Val::Bool(true).len(), 1);
  }
