@@ -1,5 +1,12 @@
 use std::fmt;
 
+///Main enum that represents a dynamic value
+///###Example
+///
+///```
+/// extern crate apple;
+///let f = apple::val::Val::Int(8);
+///```
 pub enum Val {
 	Int(i32),
 	Str(String),
@@ -11,7 +18,14 @@ pub enum Val {
 //int operations, arithmetic
 
 impl Val {
-
+///Function that formats a `Val` into a String.
+///###Example
+///
+///```
+/// extern crate apple;
+///let f = apple::val::Val::Int(8);
+///println!("The format is {}", Val::repr(f));
+///```
 	pub fn repr(value:&Val) -> String {
 		match *value {
 			Val::Int(i) => format!("{}", i),
@@ -45,7 +59,15 @@ impl Val {
 		}
 		Val::List(list)
 	}
-
+///Function that returns the corresponding i32 value of a `Val`.
+///If the Val is not an int, returns 0
+///###Example
+///
+///```
+/// extern crate apple;
+///let f = apple::val::Val::Int(8);
+///println!("The int is {}", f.int());
+///```
 	pub fn int(self) -> i32 {
 		match self {
 			Val::Int(i) => i,
@@ -76,7 +98,7 @@ impl Val {
 			_ => false
 		}
 	}
-
+///This function either adds integers or concats string `Val`s.
 	pub fn plus(self, other:Val) -> Val {
 		match self {
 			Val::Int(i) => match other {
@@ -178,6 +200,17 @@ impl Val {
 					Some(res) => res,
 					None => Val::Null
 				}
+			},
+			_ => Val::Null
+		}
+	}
+
+	pub fn get(self, other:usize) -> Val {
+		let d = other;
+		match self {
+			Val::Str(s) => match s.chars().nth(d) {
+				Some(chr) => Val::Str(chr.to_string()),
+				None => Val::Null
 			},
 			_ => Val::Null
 		}

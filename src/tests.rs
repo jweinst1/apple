@@ -79,3 +79,8 @@ fn test_is_int() {
  fn test_bool(){
  	assert_eq!(Val::Int(8).bool(), true);
  }
+
+ #[test]
+ fn test_get(){
+ 	assert_eq!(Val::from_str("hello").get(2 as usize).str(), "l");
+ }
