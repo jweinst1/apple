@@ -38,6 +38,14 @@ impl Val {
 		Val::Int(elem)
 	}
 
+	pub fn from_ivec(lst:Vec<i32>) -> Val {
+		let mut list:Vec<Val> = Vec::new();
+		for elem in lst {
+			list.push(Val::Int(elem))
+		}
+		Val::List(list)
+	}
+
 	pub fn int(self) -> i32 {
 		match self {
 			Val::Int(i) => i,

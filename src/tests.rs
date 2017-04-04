@@ -59,3 +59,13 @@ fn test_is_int() {
  fn test_len(){
  	assert_eq!(Val::Bool(true).len(), 1);
  }
+
+ #[test]
+ fn test_from_ivec(){
+ 	assert_eq!(Val::repr(&Val::from_ivec(vec![2, 3, 4])), "[2,3,4,]".to_string());
+ }
+
+ #[test]
+ fn test_push(){
+ 	assert_eq!(Val::repr(&Val::from_ivec(vec![2, 3, 4]).push(Val::Int(7))), "[2,3,4,7,]".to_string());
+ }
