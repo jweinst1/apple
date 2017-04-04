@@ -60,6 +60,16 @@ impl Val {
 		}
 	}
 
+	pub fn bool(self) -> bool {
+		match self {
+			Val::Int(i) => i != 0,
+			Val::Str(s) => s.len() != 0,
+			Val::Bool(b) => b,
+			Val::List(l) => l.len() != 0,
+			_ => false
+		}
+	}
+
 	pub fn is_int(self) -> bool {
 		match self {
 			Val::Int(_) => true,
@@ -156,6 +166,18 @@ impl Val {
 			Val::List(mut l) => {
 				l.push(other);
 				Val::List(l)
+			},
+			_ => Val::Null
+		}
+	}
+
+	pub fn pop(self) -> Val {
+		match self {
+			Val::List(mut l) => {
+				match l.pop() {
+					Some(res) => res,
+					None => Val::Null
+				}
 			},
 			_ => Val::Null
 		}
